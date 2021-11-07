@@ -49,7 +49,8 @@ namespace FA2021AnimeDashboard
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
+                /*
+                                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
@@ -58,6 +59,8 @@ namespace FA2021AnimeDashboard
                 endpoints.MapControllerRoute(
                     name: "anime",
                     pattern: "{controller=Anime}/{action=Index}/{id?}");
+                 */
+                endpoints.MapRazorPages();
             });
         }
     }

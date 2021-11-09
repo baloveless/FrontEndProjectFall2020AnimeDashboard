@@ -1,0 +1,40 @@
+﻿main {
+    align-items: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+p {
+    color: black;
+    font-size: 12pt;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    height: fit-content;
+    margin: auto;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: teal;
+}
+
+.flex-item {
+    width: 45%;
+    height: fit-content;
+    background-color: white;
+    border: 3px solid teal;
+    justify-content: space-evenly;
+    border-radius: 15px;
+}
+
+.quiz {
+    min-width: 400px;
+    max-width: 800px;
+    background-color: white;
+    margin: auto;
+}

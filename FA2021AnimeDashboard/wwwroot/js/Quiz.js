@@ -1,4 +1,46 @@
-﻿let choices = []; // hold response to each question
+﻿let search = document.getElementById("search");
+let show = document.getElementById("show");
+let quizOptions = document.getElementById("showChoice");
+
+// calls jikan api for a list of shows matching that title.
+// ** this is only set up for tv series currently
+search.addEventListener("click", event => {
+	event.preventDefault();
+	if (show.value == null || show.value === "") {
+		defaultOpts();
+		return;
+	}
+	let Url = 'https://api.jikan.moe/v3/search/anime?q=#&type=TV&limit=10';
+	Url = Url.replace("#", show.value);
+	console.log(Url);
+	fetch(Url)
+		.then(data => { return data.json() })
+		.then(res => { showOptions(res) })
+		.catch(error => { console.log(error); defaultOpts() });
+})
+
+function defaultOpts() {
+	quizOptions.innerHTML = "";
+	let newOpt = document.createElement("option");
+	newOpt.innerText = "Search first";
+	quizOptions.appendChild(newOpt);
+	quizOptions.setAttribute("disabled", "true");
+}
+
+// displays results of search to be chosen from
+function showOptions(res) {
+	quizOptions.innerHTML = "";
+	for (i = 0; i < res.results.length; i++) {
+		let newOpt = document.createElement("option");
+		newOpt.innerText = res.results[i].title;
+		quizOptions.appendChild(newOpt);
+	}
+	quizOptions.removeAttribute("disabled");
+}
+
+
+/* Quiz questions */
+let choices = []; // hold response to each question
 
 let questions = ["What is your favorite fruit?",
 	"What sounds like the best thing to do with you night?",
@@ -11,7 +53,7 @@ let questions = ["What is your favorite fruit?",
 
 let curr = 0; // current question
 
-let buttons = document.getElementsByClassName("btn");
+let buttons = document.getElementsByClassName("btn-info");
 
 newQuestion();
 
@@ -45,6 +87,7 @@ function newQuestion() {
 	resultsScreen();
 }
 
+/* Results */
 // show results of the 
 function resultsScreen() {
 	document.getElementById("body").remove(); // remove questions box
@@ -56,7 +99,7 @@ function resultsScreen() {
 	let output = document.createElement("div");
 	output.className = "flex-item";
 	let image = document.createElement("img");
-	image.src = "http://placekitten.com/300/300/";
+	image.src = "https://placekitten.com/300/300/";
 	image.id = "output";
 	output.appendChild(image);
 	let link = document.createElement("p");

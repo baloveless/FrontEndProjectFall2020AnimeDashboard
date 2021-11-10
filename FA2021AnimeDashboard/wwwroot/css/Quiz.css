@@ -38,3 +38,45 @@ p {
     background-color: white;
     margin: auto;
 }
+
+
+label {
+    margin: auto;
+    padding: 10px;
+}
+
+.setup {
+    height: auto;
+    background-color: white;
+    width: 50%;
+    padding: 10px;
+    max-width: 800px;
+    min-width: 400px;
+    border-radius: 5px;
+    border:solid;
+    border-color:black;
+    margin: auto;
+}
+
+textarea {
+    height: 200px;
+    max-width: 100%;
+    min-width: 100%
+}
+
+input[type=text], select, textarea {
+    border: 2px solid gray;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+label {
+    width: 100%;
+}
+
+.req {
+    color: #0173a0;
+}
+

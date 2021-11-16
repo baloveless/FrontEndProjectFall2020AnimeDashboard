@@ -11,6 +11,10 @@ p {
     font-size: 12pt;
 }
 
+.btn-primary{
+    background-color: darkblue;
+}
+
 .flex-container {
     display: flex;
     flex-direction: row;

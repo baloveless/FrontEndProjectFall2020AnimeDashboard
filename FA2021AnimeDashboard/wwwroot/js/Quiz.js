@@ -1,6 +1,8 @@
-﻿let search = document.getElementById("search");
+﻿let form = document.getElementById("setup");
+let search = document.getElementById("search");
 let show = document.getElementById("show");
 let quizOptions = document.getElementById("showChoice");
+let quiz = document.getElementById("quiz");
 let queryRes; // holds query results to help with getting the character list of the show
 
 // calls jikan api for a list of shows matching that title.
@@ -16,7 +18,7 @@ search.addEventListener("click", event => {
 	console.log(Url);
 	fetch(Url)
 		.then(data => { return data.json() })
-		.then(res => { queryRes = res; showOptions(res) })
+		.then(res => { queryRes = res.results; showOptions(res) })
 		.catch(error => { console.log(error); defaultOpts() });
 })
 
@@ -42,9 +44,22 @@ function showOptions(res) {
 	btn.className = "btn btn-block btn-success";
 	btn.id = "startQuiz";
 	btn.value = "submit"
-	let form = document.getElementById("setup");
+	btn.innerText = "Start Quiz"
 	form.appendChild(btn);
 }
+
+// listen for submit to start quiz
+form.addEventListener("submit", event => {
+	event.preventDefault();
+	let quizOn = quizOptions.selectedIndex;
+	if (quizOn === -1)
+		return;
+	let decision = queryRes[quizOn];
+	console.log(quiz);
+	console.log(form);
+	quiz.toggleAttribute("hidden");
+	form.toggleAttribute("hidden");
+});
 
 
 /* Quiz questions */

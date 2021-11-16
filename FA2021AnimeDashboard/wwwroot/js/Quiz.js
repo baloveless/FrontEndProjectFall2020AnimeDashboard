@@ -1,6 +1,7 @@
 ﻿let search = document.getElementById("search");
 let show = document.getElementById("show");
 let quizOptions = document.getElementById("showChoice");
+let queryRes; // holds query results to help with getting the character list of the show
 
 // calls jikan api for a list of shows matching that title.
 // ** this is only set up for tv series currently
@@ -15,7 +16,7 @@ search.addEventListener("click", event => {
 	console.log(Url);
 	fetch(Url)
 		.then(data => { return data.json() })
-		.then(res => { showOptions(res) })
+		.then(res => { queryRes = res; showOptions(res) })
 		.catch(error => { console.log(error); defaultOpts() });
 })
 
@@ -24,7 +25,8 @@ function defaultOpts() {
 	let newOpt = document.createElement("option");
 	newOpt.innerText = "Search first";
 	quizOptions.appendChild(newOpt);
-	quizOptions.setAttribute("disabled", "true");
+	quizOptions.toggleAttribute("disabled");
+	document.getElementById("startQuiz").remove();
 }
 
 // displays results of search to be chosen from
@@ -35,7 +37,13 @@ function showOptions(res) {
 		newOpt.innerText = res.results[i].title;
 		quizOptions.appendChild(newOpt);
 	}
-	quizOptions.removeAttribute("disabled");
+	quizOptions.toggleAttribute("disabled");
+	let btn = document.createElement("button");
+	btn.className = "btn btn-block btn-success";
+	btn.id = "startQuiz";
+	btn.value = "submit"
+	let form = document.getElementById("setup");
+	form.appendChild(btn);
 }
 
 

@@ -1,5 +1,5 @@
 ﻿@page
-@model FA2021AnimeDashboard.Pages.AnimeBuzzfeedisCoolModel
+@model FA2021AnimeDashboard.Pages.QuizModel
 @{
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
@@ -16,18 +16,18 @@
 
 <body>
     <main>
-        <form class= "setup" id="setup">
-            <label for= "show">
+        <form class="setup" id="setup">
+            <label for="show">
                 What show would you like to quiz on?
-                <input type="text" name="show" id="show"/>
+                <input type="text" name="show" id="show" />
             </label>
-            <button id="search" class="btn btn-block btn-primary">Search</button>
-            <br/>
+            <button id="search" value="submit" class="btn btn-block btn-primary">Search</button>
+            <br />
             <select class="form-control" id="showChoice" disabled>
-               <option class="quizOpt">Search first</option> 
+                <option class="quizOpt">Search first</option>
             </select>
         </form>
-        <div hidden class="quiz" id="quiz">
+        <div hidden class="quiz">
             <h2 id="question"></h2>
             <div class="flex-container" id="body">
                 <div class="flex-item">

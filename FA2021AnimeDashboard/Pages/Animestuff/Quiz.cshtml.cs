@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FA2021AnimeDashboard.Pages
 {
-    public class AnimeBuzzfeedisCoolModel : PageModel
+    public class QuizModel : PageModel
     {
         public void OnGet()
         {

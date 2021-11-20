@@ -41,12 +41,14 @@ function showOptions(res) {
 		quizOptions.appendChild(newOpt);
 	}
 	quizOptions.toggleAttribute("disabled");
-	let btn = document.createElement("button");
-	btn.className = "btn btn-block btn-success";
-	btn.id = "startQuiz";
-	btn.value = "submit"
-	btn.innerText = "Start Quiz"
-	form.appendChild(btn);
+	if (document.getElementById('startQuiz') === null) {
+		let btn = document.createElement("button");
+		btn.className = "btn btn-block btn-success";
+		btn.id = "startQuiz";
+		btn.value = "submit"
+		btn.innerText = "Start Quiz"
+		form.appendChild(btn);
+	}
 }
 
 // listen for submit to start quiz
@@ -125,8 +127,10 @@ function newQuestion() {
 		curr++;
 		return;
 	}
-	resultsCharacter(choices);
-	//resultsScreen();
+	// disable all buttons to avoid any errors from unneccesary input
+	for (i = 0; i < 4; i++)
+		buttons[i].toggleAttribute('disabled');
+	resultsCharacter();
 }
 
 /* Results */
@@ -136,13 +140,13 @@ function resultsScreen(character) {
 	document.getElementById("body").remove(); // remove questions box
 	let results = document.getElementsByClassName("quiz")[0];
 	let header = document.getElementById("question");
-	header.innerHTML = "You are (Some character)!";
+	header.innerHTML = "You are " + character.name + "!";
 	let container = document.createElement("div");
 	container.className = "flex-container";
 	let output = document.createElement("div");
 	output.className = "flex-item";
 	let image = document.createElement("img");
-	image.src = "https://placekitten.com/300/300/";
+	image.src = character.image_url;
 	image.id = "output";
 	output.appendChild(image);
 	let link = document.createElement("p");
@@ -155,7 +159,7 @@ function resultsScreen(character) {
 /* get output character */
 
 
-let resultsCharacter = async (choices) => {
+let resultsCharacter = async () => {
 	let Url = 'https://api.jikan.moe/v3/anime/' + queryRes[quizOn].mal_id + '/characters_staff';
 	try {
 		let response = await fetch(Url);

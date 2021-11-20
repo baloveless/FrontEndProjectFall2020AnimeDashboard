@@ -63,19 +63,19 @@ form.addEventListener("submit", event => {
 });
 
 // this api can pull any pictures apparently? (needs a test)
-let picsUrl = "https://imsea.herokuapp.com/api/1?q=#"
 
 console.log(document.URL.replace("Animestuff/Quiz", ''));
 
 // Populates a questions photo options
 let getPhotos = async (i) => { 
-	for (x = 0; x < 4; x++) {
-		try {
-			let response = await fetch(picsUrl.replace("#", answers[i][x]));
+	try {
+		for (x = 0; x < 4; x++) {
+			let picsUrl = 'https://imsea.herokuapp.com/api/1?q=peach';
+			let response = await fetch(picsUrl);
 			console.log(response);
-		} catch (error) {
-			console.error(error);
-        }
+		}
+	} catch (error) {
+		console.error(error);
     }
 }
 
@@ -138,22 +138,16 @@ function newQuestion() {
 function resultsScreen(character) {
 	console.log(character);
 	document.getElementById("body").remove(); // remove questions box
-	let results = document.getElementsByClassName("quiz")[0];
+	let results = document.getElementById("quiz");
 	let header = document.getElementById("question");
 	header.innerHTML = "You are " + character.name + "!";
-	let container = document.createElement("div");
-	container.className = "flex-container";
-	let output = document.createElement("div");
-	output.className = "flex-item";
 	let image = document.createElement("img");
 	image.src = character.image_url;
 	image.id = "output";
-	output.appendChild(image);
+	results.appendChild(image);
 	let link = document.createElement("p");
 	link.innerHTML = choices + "<br>Link to the characters info page";
-	output.appendChild(link);
-	container.appendChild(output);
-	results.appendChild(container);
+	results.appendChild(link);
 }
 
 /* get output character */

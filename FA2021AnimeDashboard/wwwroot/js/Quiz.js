@@ -1,8 +1,9 @@
 ﻿let form = document.getElementById("setup");
-let search = document.getElementById("search");
-let show = document.getElementById("show");
-let quizOptions = document.getElementById("showChoice");
-let quiz = document.getElementById("quiz");
+let search = document.getElementById("search");			// user search button 
+let show = document.getElementById("show");				// user search input
+let quizOptions = document.getElementById("showChoice");// list of shows to quiz on
+let quiz = document.getElementById("quiz");				// quiz dom element
+let quizOn = 0;											// show the quiz is on by array
 let queryRes; // holds query results to help with getting the character list of the show
 
 // calls jikan api for a list of shows matching that title.
@@ -51,28 +52,44 @@ function showOptions(res) {
 // listen for submit to start quiz
 form.addEventListener("submit", event => {
 	event.preventDefault();
-	let quizOn = quizOptions.selectedIndex;
-	if (quizOn === -1)
+	let qn = quizOptions.selectedIndex;
+	if (qn === -1)
 		return;
-	let decision = queryRes[quizOn];
-	console.log(quiz);
-	console.log(form);
+	quizOn = qn;
 	quiz.toggleAttribute("hidden");
 	form.toggleAttribute("hidden");
 });
 
+// this api can pull any pictures apparently? (needs a test)
+let picsUrl = "https://imsea.herokuapp.com/api/1?q=#"
+
+console.log(document.URL.replace("Animestuff/Quiz", ''));
+
+// Populates a questions photo options
+let getPhotos = async (i) => { 
+	for (x = 0; x < 4; x++) {
+		try {
+			let response = await fetch(picsUrl.replace("#", answers[i][x]));
+			console.log(response);
+		} catch (error) {
+			console.error(error);
+        }
+    }
+}
 
 /* Quiz questions */
 let choices = []; // hold response to each question
 
 let questions = ["What is your favorite fruit?",
-	"What sounds like the best thing to do with you night?",
+	"What sounds like the best thing to do with your night?",
 	"What is your favorite color?",
 	"My Friends see me as ...",
 	"When faced with a challenge my first instinct is to ...",
 	"I always have a ______ with me",
 	"If my neighbors were having a big party ...",
 	"When one of my friends suggests an idea I ..."];
+
+let answers = [["apple", "pear", "orange", "peach"]];
 
 let curr = 0; // current question
 
@@ -104,15 +121,18 @@ buttons[3].addEventListener("click", event => {
 function newQuestion() {
 	if (curr < questions.length) {
 		document.getElementById("question").innerHTML = questions[curr];
+		//getPhotos(0);
 		curr++;
 		return;
 	}
-	resultsScreen();
+	resultsCharacter(choices);
+	//resultsScreen();
 }
 
 /* Results */
 // show results of the 
-function resultsScreen() {
+function resultsScreen(character) {
+	console.log(character);
 	document.getElementById("body").remove(); // remove questions box
 	let results = document.getElementsByClassName("quiz")[0];
 	let header = document.getElementById("question");
@@ -131,3 +151,25 @@ function resultsScreen() {
 	container.appendChild(output);
 	results.appendChild(container);
 }
+
+/* get output character */
+
+
+let resultsCharacter = async (choices) => {
+	let Url = 'https://api.jikan.moe/v3/anime/' + queryRes[quizOn].mal_id + '/characters_staff';
+	try {
+		let response = await fetch(Url);
+		let chars = await response.json();
+		let resChar = 0;
+		let primes = [2, 37, 11, 43, 5, 53, 7, 61];
+		for (i = 0; i < choices.length; i++)
+			resChar += choices[i] * primes[i];
+		resultsScreen(chars.characters[resChar % chars.characters.length]);
+	} catch (error) {
+		console.error(error);
+    }
+}
+
+
+
+

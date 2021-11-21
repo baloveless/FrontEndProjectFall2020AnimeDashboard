@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Animestuff\Index.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\Animestuff\Index.cshtml" />
     <Content Remove="wwwroot\css\GenreInfo.cshtml" />
     <Content Remove="wwwroot\css\GenreInfo.cshtml.cs" />
   </ItemGroup>

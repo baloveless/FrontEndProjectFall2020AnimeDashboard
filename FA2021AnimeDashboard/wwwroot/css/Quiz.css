@@ -11,6 +11,11 @@ p {
     font-size: 12pt;
 }
 
+img{
+    max-height: 80vh;
+    width: auto;
+}
+
 .btn-primary{
     background-color: darkblue;
 }

@@ -88,10 +88,20 @@ let questions = ["What is your favorite fruit?",
 	"My Friends see me as ...",
 	"When faced with a challenge my first instinct is to ...",
 	"I always have a ______ with me",
-	"If my neighbors were having a big party ...",
+	"If my neighbors were having a big party I would ...",
 	"When one of my friends suggests an idea I ..."];
 
-let answers = [["apple", "pear", "orange", "peach"]];
+let answers = [["apple", "pear", "orange", "peach"],
+	["Reading a book", "Going out to a Club", "Watching Netflix", "Seeing Grandma"],
+	["Blue", "Red", "Green", "Yellow"],
+	["a Goofball", "Kind", "Honest", "Trustworthy"],
+	["tear it down", "talk it out", "get a friends help", "call mom"],
+	["pocket knife", "snack", "map", "friend"],
+	["join in", "call the cops", "start my own party", "sulk"],
+	["listen carefully", "ignore them", "pretend it was mine", "use it everytime"]
+];
+
+let pictures = ["../QuizPictures/FruitBowl.jpg"]
 
 let curr = 0; // current question
 
@@ -123,6 +133,11 @@ buttons[3].addEventListener("click", event => {
 function newQuestion() {
 	if (curr < questions.length) {
 		document.getElementById("question").innerHTML = questions[curr];
+		let btns = document.getElementsByClassName("btn-info");
+		for (i = 0; i < btns.length; i++) {
+			btns[i].innerText = answers[curr][i];
+		}
+		document.getElementById("picture").src = pictures[0];
 		//getPhotos(0);
 		curr++;
 		return;

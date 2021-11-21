@@ -13,6 +13,7 @@ p {
 
 img{
     max-height: 80vh;
+    max-width: 70vw;
     width: auto;
 }
 

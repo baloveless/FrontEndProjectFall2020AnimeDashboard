@@ -101,7 +101,16 @@ let answers = [["apple", "pear", "orange", "peach"],
 	["listen carefully", "ignore them", "pretend it was mine", "use it everytime"]
 ];
 
-let pictures = ["../QuizPictures/FruitBowl.jpg"]
+let pictures = [
+	"../QuizPictures/FruitBowl.jpg",
+	"../QuizPictures/Night.png",
+	"../QuizPictures/Color.jpg",
+	"../QuizPictures/Friends.png",
+	"../QuizPictures/Challenge.jpg",
+	"../QuizPictures/Item.png",
+	"../QuizPictures/Party.png",
+	"../QuizPictures/Talking.jpeg",
+]
 
 let curr = 0; // current question
 
@@ -137,7 +146,7 @@ function newQuestion() {
 		for (i = 0; i < btns.length; i++) {
 			btns[i].innerText = answers[curr][i];
 		}
-		document.getElementById("picture").src = pictures[0];
+		document.getElementById("picture").src = pictures[curr];
 		//getPhotos(0);
 		curr++;
 		return;

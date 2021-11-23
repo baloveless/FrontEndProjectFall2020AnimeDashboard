@@ -155,19 +155,15 @@ function newQuestion() {
 	}
 	// disable all buttons to avoid any errors from unneccesary input
 	for (i = 0; i < 4; i++)
-		buttons[i].toggleAttribute('disabled');
+		buttons[i].toggleAttribute('hidden');
+	// show see results button
+	document.getElementById("results").toggleAttribute('hidden'); 
 	resultsCharacter();
 }
 
 /* Results */
-// show results of the 
-function resultsScreen(resChar) {
-	character = resChar
-	let results = document.getElementById("quiz");
-	results.toggleAttribute('hidden');
 
-}
-
+// gets result character to use in a request
 function getCharacter() {
 	return chracter;
 }
@@ -184,11 +180,39 @@ let resultsCharacter = async () => {
 		let primes = [2, 37, 11, 43, 5, 53, 7, 61];
 		for (i = 0; i < choices.length; i++)
 			resChar += choices[i] * primes[i];
-		resultsScreen(chars.characters[resChar % chars.characters.length]);
+		character = chars.characters[resChar % chars.characters.length];
+		//let characterCard = postCharacterPage();
+		//console.log(characterCard);
 	} catch (error) {
 		console.error(error);
     }
 }
+
+function getUrl() {
+	return document.URL.replace("/Quiz", "/partials/_character")
+}
+
+let postCharacterPage = async () => {
+	try {
+		return await fetch(document.URL + "/Animestuff/partials/_character", {
+			method: 'POST',
+			body: character,
+			credentials: 'same-origin',
+			headers: {
+				'Content-Type': 'application/json',
+			}
+		});
+        } catch (e) {
+            console.error(e);
+        }
+}
+
+document.getElementById('submit').addEventListener('submit', event => {
+	event.preventDefault();
+})
+
+
+
 
 
 

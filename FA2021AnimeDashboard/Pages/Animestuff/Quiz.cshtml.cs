@@ -9,8 +9,9 @@ namespace FA2021AnimeDashboard.Pages
 {
     public class QuizModel : PageModel
     {
-        public void OnGet()
+        public async Task OnPostSubmit()
         {
+            
         }
     }
 }

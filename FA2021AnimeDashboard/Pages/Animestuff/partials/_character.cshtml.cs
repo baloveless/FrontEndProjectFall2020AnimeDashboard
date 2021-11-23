@@ -16,21 +16,26 @@ namespace FA2021AnimeDashboard.Pages.Animestuff.partials
         public charactersResponse multiResponse;
 
         public async Task OnGet() {
-            var myJObject = JsonConvert.DeserializeObject<character>("" +
-                "{'mal_id': 0," +
-                "'url': '',"+
-                "'image_url': '',"+
-                "'name': '',"+
-                "'role': '',"+
-                "'voice_actors': [],"+
-                "}");
-            toShow = (myJObject);
+            if (toShow == null || toShow.url == "") {
+                var myJObject = JsonConvert.DeserializeObject<character>("" +
+                    "{'mal_id': 0," +
+                    "'url': ''," +
+                    "'image_url': ''," +
+                    "'name': ''," +
+                    "'role': ''," +
+                    "'voice_actors': []," +
+                    "}");
+                toShow = (myJObject);
+            }
         }
 
-        public async Task onPost(character toShow)
+        public async Task OnPostAsync()
         {
-            var myJObject = JsonConvert.DeserializeObject<character>(toShow.ToString());
-            this.toShow = (myJObject);
+            toShow = new character();
+            toShow.url = Request.Form["url"];
+            toShow.image_url = Request.Form["image_url"];
+            toShow.name = Request.Form["name"];
+            toShow.role = Request.Form["role"];
         }
 
         public async Task CreatePage()

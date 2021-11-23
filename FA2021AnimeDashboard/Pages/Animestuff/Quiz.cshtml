@@ -2,31 +2,14 @@
 @model FA2021AnimeDashboard.Pages.Animestuff.partials._characterModel
 @{
     Layout = "~/Pages/Shared/_Layout.cshtml";
-
+    string myUrl = Url.Content("~/Pages/Animestuff/partials/_character");
 }
 
 <script defer src="~/js/Quiz.js"></script>
 <script>
 
     // have user post their info and have an on post function instead.
-    document.getElementById("results").addEventListener("change", event => {
-        try {
-            await fetch(document.URL, {
-                method: 'POST',
-                body: getCharacter(),
-                credentials: 'same-origin',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            })
-        } catch (e) {
-            console.error(e);
-        }
-        @{
-            await Html.RenderPartialAsync("~/Pages/Animestuff/partials/_character.cshtml");
-        }
-    })
-</script>
+  </script>
 <link rel="stylesheet" href="~/css/Quiz.css" />
 <form class="setup" id="setup">
     <label for="show">
@@ -49,9 +32,14 @@
         <button id="option4" class="btn btn-info btn-block btn-lg">Option 4</button>
     </div>
 </div>
-<div hidden class="quiz" id="results">
-    <h1>You are...</h1>
-</div>
+    @{
+        await Html.RenderPartialAsync("~/Pages/Animestuff/partials/_character.cshtml");
+        if (HttpContext.Request.Method == "POST")
+        {
+            System.Diagnostics.Debug.WriteLine("\n" + HttpContext.Request.ToString() + "\n");
+            System.Diagnostics.Debug.WriteLine(Model);
+        }
+    }
 
 
 

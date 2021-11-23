@@ -101,3 +101,23 @@ label {
     color: #0173a0;
 }
 
+.characterCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    max-height: 80vh;
+    margin: auto;
+    max-width: 80vw;
+}
+
+h1{
+    text-align: center;
+}
+
+.characterImg{
+    width: fit-content;
+    align-self: center;
+}
+
+

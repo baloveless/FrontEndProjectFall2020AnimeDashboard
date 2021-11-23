@@ -1,10 +1,12 @@
-﻿let form = document.getElementById("setup");
+﻿
+let form = document.getElementById("setup");
 let search = document.getElementById("search");			// user search button 
 let show = document.getElementById("show");				// user search input
 let quizOptions = document.getElementById("showChoice");// list of shows to quiz on
 let quiz = document.getElementById("quiz");				// quiz dom element
 let quizOn = 0;											// show the quiz is on by array
 let queryRes; // holds query results to help with getting the character list of the show
+let character;
 
 // calls jikan api for a list of shows matching that title.
 // ** this is only set up for tv series currently
@@ -159,19 +161,15 @@ function newQuestion() {
 
 /* Results */
 // show results of the 
-function resultsScreen(character) {
-	console.log(character);
-	document.getElementById("body").remove(); // remove questions box
+function resultsScreen(resChar) {
+	character = resChar
 	let results = document.getElementById("quiz");
-	let header = document.getElementById("question");
-	header.innerHTML = "You are " + character.name + "!";
-	let image = document.createElement("img");
-	image.src = character.image_url;
-	image.id = "output";
-	results.appendChild(image);
-	let link = document.createElement("p");
-	link.innerHTML = choices + "<br>Link to the characters info page";
-	results.appendChild(link);
+	results.toggleAttribute('hidden');
+
+}
+
+function getCharacter() {
+	return chracter;
 }
 
 /* get output character */

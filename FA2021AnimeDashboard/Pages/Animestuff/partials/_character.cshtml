@@ -1,18 +1,17 @@
 ﻿@model FA2021AnimeDashboard.Pages.Animestuff.partials._characterModel
 
-<form method="POST" class="setup" id="results" name="character">
+<form hidden method="POST" class="setup" id="results" name="character">
     <h1>You are...</h1>
     <button id="submit" value="Submit" type="submit" class="btn btn-success btn-block btn-lg" >See results</button>
-    <input type="hidden" name="mal_id" value=0 />
-    <input type="hidden" name="url" value=" " />
-    <input type="hidden" name="image_url" value=" " />
-    <input type="hidden" name="name" value="a" />
-    <input type="hidden" name="role" value=" " />
-    <input type="hidden" name="role" value=" " />
+    <input type="hidden" id="mal_id" name="mal_id" value=0 />
+    <input type="hidden" id="url"name="url" value=" " />
+    <input type="hidden" id="image_url"name="image_url" value=" " />
+    <input type="hidden" id="name"name="name" value=" " />
+    <input type="hidden" id="role"name="role" value=" " />
 </form>
 
 
-<div hidden class="characterCard" id=@Model.toShow.name >
+<div hidden class="characterCard" id='@Model.toShow.name' >
    <h1>@Model.toShow.name</h1> 
    <img src =@Model.toShow.image_url/>
 </div>

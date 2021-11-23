@@ -14,7 +14,8 @@ namespace FA2021AnimeDashboard.Pages.Animestuff.partials
         public character toShow;
         public characterResponse singleResponse;
         public charactersResponse multiResponse;
-
+    
+        // creates an empty object to avoid null reference errors
         public async Task OnGet() {
             if (toShow == null || toShow.url == "") {
                 var myJObject = JsonConvert.DeserializeObject<character>("" +
@@ -32,12 +33,14 @@ namespace FA2021AnimeDashboard.Pages.Animestuff.partials
         public async Task OnPostAsync()
         {
             toShow = new character();
+            // need to write function to change string to int for mal_id
             toShow.url = Request.Form["url"];
             toShow.image_url = Request.Form["image_url"];
             toShow.name = Request.Form["name"];
             toShow.role = Request.Form["role"];
         }
 
+        // get list of characters pictures, (incomplete)
         public async Task CreatePage()
         {
             var client = new HttpClient();

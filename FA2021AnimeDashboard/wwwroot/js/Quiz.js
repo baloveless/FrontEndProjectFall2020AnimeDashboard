@@ -181,8 +181,11 @@ let resultsCharacter = async () => {
 		for (i = 0; i < choices.length; i++)
 			resChar += choices[i] * primes[i];
 		character = chars.characters[resChar % chars.characters.length];
-		//let characterCard = postCharacterPage();
-		//console.log(characterCard);
+		document.getElementById('mal_id').setAttribute('value', '' + character.mal_id);
+		document.getElementById('url').setAttribute('value', character.url);
+		document.getElementById('image_url').setAttribute('value', character.image_url);
+		document.getElementById('name').setAttribute('value', character.name);
+		document.getElementById('role').setAttribute('value', character.role);
 	} catch (error) {
 		console.error(error);
     }
@@ -192,27 +195,18 @@ function getUrl() {
 	return document.URL.replace("/Quiz", "/partials/_character")
 }
 
-let postCharacterPage = async () => {
-	try {
-		return await fetch(document.URL + "/Animestuff/partials/_character", {
-			method: 'POST',
-			body: character,
-			credentials: 'same-origin',
-			headers: {
-				'Content-Type': 'application/json',
-			}
-		});
-        } catch (e) {
-            console.error(e);
-        }
+let characterCard = document.getElementsByClassName('characterCard')[0];
+
+if (characterCard.id !== ' ') {
+	characterCard.toggleAttribute('hidden');
+	setup.toggleAttribute('hidden');
+	let reset = document.createElement('button');
+	reset.className = "btn btn-success btn-block btn-lg";
+	reset.addEventListener('click', event => {
+		// reset cookies so quiz can be taken again
+	});
+	characterCard.append(reset);
 }
-
-document.getElementById('submit').addEventListener('submit', event => {
-	event.preventDefault();
-})
-
-
-
 
 
 

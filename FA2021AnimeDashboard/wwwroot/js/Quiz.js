@@ -157,7 +157,7 @@ function newQuestion() {
 	for (i = 0; i < 4; i++)
 		buttons[i].toggleAttribute('hidden');
 	// show see results button
-	document.getElementById("results").toggleAttribute('hidden'); 
+	//document.getElementById("results").toggleAttribute('hidden'); 
 	resultsCharacter();
 }
 
@@ -181,8 +181,11 @@ let resultsCharacter = async () => {
 		for (i = 0; i < choices.length; i++)
 			resChar += choices[i] * primes[i];
 		character = chars.characters[resChar % chars.characters.length];
-		//let characterCard = postCharacterPage();
-		//console.log(characterCard);
+		document.getElementById('mal_id').setAttribute('value', '' + character.mal_id);
+		document.getElementById('url').setAttribute('value', character.url);
+		document.getElementById('image_url').setAttribute('value', character.image_url);
+		document.getElementById('name').setAttribute('value', character.name);
+		document.getElementById('role').setAttribute('value', character.role);
 	} catch (error) {
 		console.error(error);
     }
@@ -190,21 +193,6 @@ let resultsCharacter = async () => {
 
 function getUrl() {
 	return document.URL.replace("/Quiz", "/partials/_character")
-}
-
-let postCharacterPage = async () => {
-	try {
-		return await fetch(document.URL + "/Animestuff/partials/_character", {
-			method: 'POST',
-			body: character,
-			credentials: 'same-origin',
-			headers: {
-				'Content-Type': 'application/json',
-			}
-		});
-        } catch (e) {
-            console.error(e);
-        }
 }
 
 document.getElementById('submit').addEventListener('submit', event => {

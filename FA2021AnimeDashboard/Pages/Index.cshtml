@@ -9,66 +9,66 @@
     int[] random = new int[5] { rnd.Next(1, 50), rnd.Next(1, 50), rnd.Next(1, 50), rnd.Next(1, 50), rnd.Next(1, 50) };
 }
 
-<div class="text-center">
+<div class="container text-center text-light bg-secondary">
     <h1 class="display-4">Featured Animes</h1>
     <div id="carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="container">
-                    <div class="card border-0">
+                    <div class="card border-0 bg-secondary">
                         <div class="card-img">
-                            <img src="@top[random[0]].image_url" class="d-block m-auto h-25 w-25" alt="first slide">
+                            <img src="@top[random[0]].image_url" width="300" height="500" class="d-block m-auto" alt="first slide">
                         </div>
                         <div class="card-body w-50 m-auto">
-                            <a class="page-link" href="@top[random[0]].url">@top[random[0]].title</a>
+                            <a class="page-link bg-dark text-light" href="@top[random[0]].url" alt="cover photo of @top[random[0]].title">@top[random[0]].title</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="container">
-                    <div class="card border-0">
+                    <div class="card border-0 bg-secondary">
                         <div class="card-img">
-                            <img src="@top[random[1]].image_url" class="d-block m-auto h-25 w-25" alt="first slide">
+                            <img src="@top[random[1]].image_url" width="300" height="500" class="d-block m-auto" alt="second slide">
                         </div>
                         <div class="card-body w-50 m-auto">
-                            <a class="page-link" href="@top[random[1]].url">@top[random[1]].title</a>
+                            <a class="page-link bg-dark text-light" href="@top[random[1]].url" alt="cover photo of @top[random[1]].title">@top[random[1]].title</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="container">
-                    <div class="card border-0">
+                    <div class="card border-0 bg-secondary">
                         <div class="card-img">
-                            <img src="@top[random[2]].image_url" class="d-block m-auto h-25 w-25" alt="first slide">
+                            <img src="@top[random[2]].image_url" width="300" height="500" class="d-block m-auto" alt="third slide">
                         </div>
                         <div class="card-body w-50 m-auto">
-                            <a class="page-link" href="@top[random[2]].url">@top[random[2]].title</a>
+                            <a class="page-link bg-dark text-light" href="@top[random[2]].url" alt="cover photo of @top[random[2]].title">@top[random[2]].title</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="container">
-                    <div class="card border-0">
+                    <div class="card border-0 bg-secondary">
                         <div class="card-img">
-                            <img src="@top[random[3]].image_url" class="d-block m-auto h-25 w-25" alt="first slide">
+                            <img src="@top[random[3]].image_url" width="300" height="500" class="d-block m-auto" alt="fourth slide">
                         </div>
                         <div class="card-body w-50 m-auto">
-                            <a class="page-link" href="@top[random[3]].url">@top[random[3]].title</a>
+                            <a class="page-link bg-dark text-light" href="@top[random[3]].url" alt="cover photo of @top[random[3]].title">@top[random[3]].title</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="container">
-                    <div class="card border-0">
+                    <div class="card border-0 bg-secondary">
                         <div class="card-img">
-                            <img src="@top[random[4]].image_url" class="d-block m-auto h-25 w-25" alt="first slide">
+                            <img src="@top[random[4]].image_url" width="300" height="500" class="d-block m-auto" alt="fifth slide">
                         </div>
                         <div class="card-body w-50 m-auto">
-                            <a class="page-link" href="@top[random[4]].url">@top[random[4]].title</a>
+                            <a class="page-link bg-dark text-light" href="@top[random[4]].url" alt="cover photo of @top[random[4]].title">@top[random[4]].title</a>
                         </div>
                     </div>
                 </div>
@@ -83,4 +83,14 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+</div>
+<div class="container bg-secondary text-center text-light mt-3">
+    <h2>Statistics on top 50 animes</h2>
+    @{
+        foreach (var anime in top)
+        {
+            <p>Episodes @anime.episodes</p>
+            <p>Members @anime.members</p>
+        }
+    }
 </div>

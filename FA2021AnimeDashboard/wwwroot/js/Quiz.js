@@ -157,7 +157,7 @@ function newQuestion() {
 	for (i = 0; i < 4; i++)
 		buttons[i].toggleAttribute('hidden');
 	// show see results button
-	document.getElementById("results").toggleAttribute('hidden'); 
+	//document.getElementById("results").toggleAttribute('hidden'); 
 	resultsCharacter();
 }
 

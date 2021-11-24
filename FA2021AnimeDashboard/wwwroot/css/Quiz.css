@@ -12,9 +12,9 @@ p {
 }
 
 img{
-    max-height: 80vh;
-    max-width: 70vw;
-    width: auto;
+    max-height: 400px;
+    width: fit-content;
+    margin: auto;
 }
 
 .btn-primary{

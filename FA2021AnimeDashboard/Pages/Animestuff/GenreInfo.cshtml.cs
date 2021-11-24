@@ -5,13 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace FA2021AnimeDashboard.Pages
+namespace FA2021AnimeDashboard.Pages.Animestuff
 {
-    public class QuizModel : PageModel
+    public class GenreInfoModel : PageModel
     {
-        public async Task OnPostSubmit()
+        public void OnGet()
         {
-            
         }
     }
 }

@@ -1,7 +1,45 @@
 ﻿@page
-@model FA2021AnimeDashboard.Pages.QuizModel
+@model FA2021AnimeDashboard.Pages.Animestuff.partials._characterModel
 @{
     Layout = "~/Pages/Shared/_Layout.cshtml";
+    string myUrl = Url.Content("~/Pages/Animestuff/partials/_character");
 }
 
-<a href="https://www.youtube.com/watch?v=BdgIsVqjGHE&ab_channel=MiguelGonz%C3%A1lezSky"> ANIME </a>
+<script defer src="~/js/Quiz.js"></script>
+<script>
+
+    // have user post their info and have an on post function instead.
+  </script>
+<link rel="stylesheet" href="~/css/Quiz.css" />
+<form class="setup" id="setup">
+    <label for="show">
+        What show would you like to quiz on?
+        <input type="text" name="show" id="show" />
+    </label>
+    <button id="search" value="submit" class="btn btn-block btn-primary">Search</button>
+    <br />
+    <select class="form-control" id="showChoice" disabled>
+        <option class="quizOpt">Search first</option>
+    </select>
+</form>
+<div hidden class="quiz" id="quiz">
+    <h2 id="question"></h2>
+    <div class="flex-container" id="body">
+        <img id="picture" />
+        <button id="option1" class="btn btn-info btn-block btn-lg">Option 1</button>
+        <button id="option2" class="btn btn-info btn-block btn-lg">Option 2</button>
+        <button id="option3" class="btn btn-info btn-block btn-lg">Option 3</button>
+        <button id="option4" class="btn btn-info btn-block btn-lg">Option 4</button>
+    </div>
+</div>
+    @{
+        await Html.RenderPartialAsync("~/Pages/Animestuff/partials/_character.cshtml");
+        if (HttpContext.Request.Method == "POST")
+        {
+            System.Diagnostics.Debug.WriteLine("\n" + HttpContext.Request.ToString() + "\n");
+            System.Diagnostics.Debug.WriteLine(Model);
+        }
+    }
+
+
+

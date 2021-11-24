@@ -12,7 +12,7 @@ let character;
 // ** this is only set up for tv series currently
 search.addEventListener("click", event => {
 	event.preventDefault();
-	if (show.value == null || show.value === "") {
+	if (show.value == null || show.value === "" || show.length < 3) {
 		defaultOpts();
 		return;
 	}
@@ -156,8 +156,10 @@ function newQuestion() {
 	// disable all buttons to avoid any errors from unneccesary input
 	for (i = 0; i < 4; i++)
 		buttons[i].toggleAttribute('hidden');
+	document.getElementById("question");
 	// show see results button
-	//document.getElementById("results").toggleAttribute('hidden'); 
+	document.getElementById("quiz").toggleAttribute('hidden')
+	document.getElementById("results").toggleAttribute('hidden'); 
 	resultsCharacter();
 }
 
@@ -197,11 +199,14 @@ function getUrl() {
 
 let characterCard = document.getElementsByClassName('characterCard')[0];
 
-if (characterCard.id !== ' ') {
+
+// unhides results if they have a page cached
+if (characterCard.id !== '') {
 	characterCard.toggleAttribute('hidden');
 	setup.toggleAttribute('hidden');
 	let reset = document.createElement('button');
 	reset.className = "btn btn-success btn-block btn-lg";
+	reset.innerHTML = "Reset Quiz";
 	reset.addEventListener('click', event => {
 		// reset cookies so quiz can be taken again
 	});

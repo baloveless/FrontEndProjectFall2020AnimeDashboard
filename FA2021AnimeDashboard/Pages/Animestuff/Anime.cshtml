@@ -1,7 +1,11 @@
 ﻿@page
-@model FA2021AnimeDashboard.Pages.Animestuff.AnimeModel
+@model FA2021AnimeDashboard.Pages.Animestuff.partials._animeModel
 @{
     Layout = "~/Pages/Shared/_Layout.cshtml";
+    int id = 1735;
 }
     <link rel="stylesheet" href="~/css/Anime.css" defer />
+
+   <!-- Search input and pick the information type they'd like to view, then pass that to the anime partial view --> 
+   @Html.Partial("~/Pages/Animestuff/partials/_anime.cshtml")
     

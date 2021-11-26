@@ -1,0 +1,28 @@
+﻿@page "{Anime}/{AnimeId:int}"
+@model FA2021AnimeDashboard.Pages.Animestuff.Details.CharactersDetailsModel
+@{
+}
+
+<div class="container text-center bg-secondary w-50">
+    <a class="text-light" asp-page="/Animestuff/AnimeDetails" asp-route-Anime="@Model.Anime">Go back to details</a>
+    @foreach (character aCharacter in Model.response.characters)
+    {
+    <div class="card">
+        <div class="card-header">
+            <a class="card-title text-dark" href="#">@aCharacter.name</a>
+        </div>
+        @if (aCharacter.voice_actors != null && aCharacter.voice_actors.Count > 0)
+        {
+        <div class="card-body">
+
+            <h5>Voice Actors</h5>
+            @foreach (voiceActor aVA in aCharacter.voice_actors)
+            {
+            <p>@aVA.name</p>
+            }
+        </div>
+
+        }
+    </div>
+    }
+</div>

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using FA2021AnimeDashboard.Pages.Animestuff.Details;
 
 namespace FA2021AnimeDashboard.Pages.Animestuff.partials
 {

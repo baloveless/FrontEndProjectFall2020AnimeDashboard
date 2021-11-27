@@ -6,4 +6,12 @@
     <link rel="stylesheet" href="~/css/Anime.css" defer />
 
    <!-- Search input and pick the information type they'd like to view, then pass that to the anime partial view --> 
-    
+   <input id="anime" type="text" />
+    <button type="submit" onclick="submitAnime();"></button>
+
+<script>
+    function submitAnime() {
+        var Anime = document.getElementById("anime").value;
+        window.location.href = "/Animestuff/AnimeDetails/" + Anime;
+    }
+</script>

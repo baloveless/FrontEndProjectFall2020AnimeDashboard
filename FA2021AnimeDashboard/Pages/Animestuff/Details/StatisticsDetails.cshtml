@@ -2,6 +2,164 @@
 @model FA2021AnimeDashboard.Pages.Animestuff.Details.StatisticsDetailsModel
 @{
 }
-<div class="container text-center bg-secondary w-50">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div class="container text-center bg-secondary w-50 pb-2">
+
+    @if (Model.response == null || Model.response.scores == null)
+    {
+        <p>There were no scores recorded.</p>
+    }
     <a class="text-light" asp-page="/Animestuff/AnimeDetails" asp-route-Anime="@Model.Anime">Go back to details</a>
+    <h5 class="text-light">@Model.Anime</h5>
+    <div>
+        <button class="btn btn-primary" onclick="toggleBar();">Bar Chart</button>
+        <button class="btn btn-dark" onclick="togglePie();">Pie Chart</button>
+    </div>
+
+    <div id="1">
+        <p hidden="hidden">@Model.response.scores.one.votes</p>
+        <p hidden="hidden">@Model.response.scores.one.percentage</p>
+    </div>
+    <div id="2">
+        <p hidden="hidden">@Model.response.scores.two.votes</p>
+        <p hidden="hidden">@Model.response.scores.two.percentage</p>
+    </div>
+    <div id="3">
+        <p hidden="hidden">@Model.response.scores.three.votes</p>
+        <p hidden="hidden">@Model.response.scores.three.percentage</p>
+    </div>
+    <div id="4">
+        <p hidden="hidden">@Model.response.scores.four.votes</p>
+        <p hidden="hidden">@Model.response.scores.four.percentage</p>
+    </div>
+    <div id="5">
+        <p hidden="hidden">@Model.response.scores.five.votes</p>
+        <p hidden="hidden">@Model.response.scores.five.percentage</p>
+    </div>
+    <div id="6">
+        <p hidden="hidden">@Model.response.scores.six.votes</p>
+        <p hidden="hidden">@Model.response.scores.six.percentage</p>
+    </div>
+    <div id="7">
+        <p hidden="hidden">@Model.response.scores.seven.votes</p>
+        <p hidden="hidden">@Model.response.scores.seven.percentage</p>
+    </div>
+    <div id="8">
+        <p hidden="hidden">@Model.response.scores.eight.votes</p>
+        <p hidden="hidden">@Model.response.scores.eight.percentage</p>
+    </div>
+    <div id="9">
+        <p hidden="hidden">@Model.response.scores.nine.votes</p>
+        <p hidden="hidden">@Model.response.scores.nine.percentage</p>
+    </div>
+    <div id="10">
+        <p hidden="hidden">@Model.response.scores.ten.votes</p>
+        <p hidden="hidden">@Model.response.scores.ten.percentage</p>
+    </div>
 </div>
+<div class="container" id="barDiv">
+    <div class="bg-light">
+        <canvas id="barChart" class="w-100 h-100"></canvas>
+    </div>
+</div>
+<div class="container" id="pieDiv" hidden="hidden">
+    <div class="bg-light">
+        pie
+        <canvas id="pieChart" class="w-100 h-100"></canvas>
+    </div>
+</div>
+<script>
+    window.addEventListener("DOMContentLoaded", function () {
+        let votes = [];
+        for (let i = 1; i < 11; i++) {
+            votes.push(document.getElementById(i).firstElementChild.innerHTML);
+        }
+        const ctx = document.getElementById('barChart');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'],
+                datasets: [{
+                    label: 'Votes for each rating',
+                    data: [votes[0], votes[1], votes[2], votes[3], votes[4], votes[5], votes[6], votes[7], votes[8], votes[9]],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'
+                        
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        new Chart(document.getElementById("pieChart"), {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'one',
+                    'two',
+                    'three',
+                    'four',
+                    'five',
+                    'six',
+                    'seven',
+                    'eight',
+                    'nine',
+                    'ten'
+                ],
+                datasets: [{
+                    label: 'Votes for each rating',
+                    data: [votes[0], votes[1], votes[2], votes[3], votes[4], votes[5], votes[6], votes[7], votes[8], votes[9]],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'
+
+                    ],
+                    hoverOffset: 4
+                }]
+            }
+        })
+    });
+    function toggleBar() {
+        document.getElementById("barDiv").hidden = false;
+        document.getElementById("pieDiv").hidden = true;
+    }
+    function togglePie() {
+        document.getElementById("pieDiv").hidden = false;
+        document.getElementById("barDiv").hidden = true;
+    }
+</script>

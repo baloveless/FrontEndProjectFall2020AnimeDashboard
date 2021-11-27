@@ -4,5 +4,30 @@
 }
 
 <div class="container text-center bg-secondary w-50">
+    @if (Model.response.episodes.Count == 0)
+    {
+        <p class="text-light">No episodes found! Check if @Model.Anime has begun airing.</p>
+    }
     <a class="text-light" asp-page="/Animestuff/AnimeDetails" asp-route-Anime="@Model.Anime">Go back to details</a>
+
+
+
+    @foreach (episode episode in Model.response.episodes)
+    {
+        <div class="card">
+            <div class="card-header">
+                <a class="card-title text-dark" href="#">@episode.title</a>
+            </div>
+            <div class="card-body">
+                @if (episode.aired != null)
+                {
+                    <p>Aired: @episode.aired</p>
+                }
+                @if (episode.filler != null)
+                {
+                    <p>Filler? @episode.filler</p>
+                }
+            </div>
+        </div>
+    }
 </div>

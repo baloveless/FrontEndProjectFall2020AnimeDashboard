@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="~/css/Quiz.css" />
 <form class="setup" id="setup">
     <label for="show">
-        What show would you like to quiz on?
+        What show would you like to quiz on? (Must contain at least 3 characters i.e. 'abc')
         <input type="text" name="show" id="show" />
     </label>
     <button id="search" value="submit" class="btn btn-block btn-primary">Search</button>
@@ -34,11 +34,6 @@
 </div>
     @{
         await Html.RenderPartialAsync("~/Pages/Animestuff/partials/_character.cshtml");
-        if (HttpContext.Request.Method == "POST")
-        {
-            System.Diagnostics.Debug.WriteLine("\n" + HttpContext.Request.ToString() + "\n");
-            System.Diagnostics.Debug.WriteLine(Model);
-        }
     }
 
 

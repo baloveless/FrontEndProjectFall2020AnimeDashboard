@@ -12,7 +12,7 @@ let character;
 // ** this is only set up for tv series currently
 search.addEventListener("click", event => {
 	event.preventDefault();
-	if (show.value == null || show.value === "") {
+	if (show.value == null || show.value === "" || show.length < 3) {
 		defaultOpts();
 		return;
 	}
@@ -156,8 +156,10 @@ function newQuestion() {
 	// disable all buttons to avoid any errors from unneccesary input
 	for (i = 0; i < 4; i++)
 		buttons[i].toggleAttribute('hidden');
+	document.getElementById("question");
 	// show see results button
-	//document.getElementById("results").toggleAttribute('hidden'); 
+	document.getElementById("quiz").toggleAttribute('hidden')
+	document.getElementById("results").toggleAttribute('hidden');
 	resultsCharacter();
 }
 
@@ -197,15 +199,23 @@ function getUrl() {
 
 let characterCard = document.getElementsByClassName('characterCard')[0];
 
-if (characterCard.id !== ' ') {
+
+// unhides results if they have a page cached
+if (/[a-zA-z]/.test(characterCard.id)) {
 	characterCard.toggleAttribute('hidden');
 	setup.toggleAttribute('hidden');
-	let reset = document.createElement('button');
+	document.getElementById('results').toggleAttribute('hidden');
+	let reset = document.getElementById("submit"); // get submit button
 	reset.className = "btn btn-success btn-block btn-lg";
-	reset.addEventListener('click', event => {
-		// reset cookies so quiz can be taken again
-	});
-	characterCard.append(reset);
+	reset.innerHTML = "Reset Quiz";
+	document.getElementById("resultsHead").toggleAttribute('hidden'); 
+	// set up empty form to reset quiz
+	document.getElementById('mal_id').setAttribute('value', ' ');
+	document.getElementById('url').setAttribute('value', " ");
+	document.getElementById('image_url').setAttribute('value', " ");
+	document.getElementById('name').setAttribute('value', " ");
+	document.getElementById('role').setAttribute('value', " ");
+	// when submitted again, the character card will be empty
 }
 
 

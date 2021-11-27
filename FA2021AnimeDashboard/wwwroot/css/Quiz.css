@@ -4,6 +4,7 @@
 
 h2 {
     text-align: center;
+    color: white;
 }
 
 p {
@@ -12,9 +13,9 @@ p {
 }
 
 img{
-    max-height: 80vh;
-    max-width: 70vw;
-    width: auto;
+    height: 400px;
+    width: fit-content;
+    margin: auto;
 }
 
 .btn-primary{
@@ -22,14 +23,14 @@ img{
 }
 
 .btn-info{
-    background-color: white;
-    color: black;
+    background-color: #343a40;
+    color: white;
     border: none;
 }
 
 .btn-info:hover{
-    background-color: darkblue;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 .flex-container {
@@ -46,15 +47,12 @@ img{
 .flex-item {
     width: 45%;
     height: fit-content;
-    background-color: white;
     justify-content: space-evenly;
-    border-radius: 15px;
 }
 
 .quiz {
     min-width: 400px;
     max-width: 800px;
-    background-color: white;
     margin: auto;
     justify-content: center;
     text-align: center;
@@ -68,14 +66,10 @@ label {
 
 .setup {
     height: auto;
-    background-color: white;
     width: 50%;
     padding: 10px;
     max-width: 800px;
     min-width: 400px;
-    border-radius: 5px;
-    border:solid;
-    border-color:black;
     margin: auto;
 }
 
@@ -95,6 +89,7 @@ input[type=text], select, textarea {
 
 label {
     width: 100%;
+    color: white;
 }
 
 .req {
@@ -108,16 +103,13 @@ label {
     align-content: center;
     max-height: 80vh;
     margin: auto;
-    max-width: 80vw;
+    max-width: 400px;
 }
 
 h1{
     text-align: center;
+    color: white;
 }
 
-.characterImg{
-    width: fit-content;
-    align-self: center;
-}
 
 

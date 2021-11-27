@@ -2,14 +2,26 @@
 @model FA2021AnimeDashboard.Pages.Animestuff.Details.NewsDetailsModel
 @{
 }
-<div class="container text-center bg-secondary w-50">
-    @if(Model.response.articles == null)
-            {
-                <p class="text-light">No articles were found for this Anime.</p>
-            }
+<div class="container text-center bg-secondary w-50 py-2">
+    @if (Model.response.articles == null)
+    {
+        <p class="text-light">No articles were found for this Anime.</p>
+    }
     <a class="text-light" asp-page="/Animestuff/AnimeDetails" asp-route-Anime="@Model.Anime">Go back to details</a>
-    @foreach(article article in Model.response.articles)
-            {
-                <p>@article.title</p>
-            }
+    @foreach (article article in Model.response.articles)
+    {
+        <div class="card bg-light mb-2">
+            <a href="@article.forum_url">
+                <div class="card-header">
+                    <img class="card-img" src="@article.image_url" />
+                    <p>@article.title</p>
+                </div>
+            </a>
+            <div class="card-body">
+                <p>Written by: @article.author_name</p>
+                <p>Published: @article.date</p>
+                <button class="btn btn-primary" onclick="window.open('@article.author_url');">More from this author</button>
+            </div>
+        </div>
+    }
 </div>

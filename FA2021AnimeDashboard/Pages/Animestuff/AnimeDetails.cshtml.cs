@@ -11,8 +11,10 @@ namespace FA2021AnimeDashboard.Pages.Animestuff
     public class AnimeDetailsModel : PageModel
     {
         public Anime response { get; set; }
+        public string anime { get; set; }
         public async Task OnGet(string Anime)
         {
+            anime = Anime;
             var client = new HttpClient();
             var request = new HttpRequestMessage
             {

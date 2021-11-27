@@ -3,7 +3,7 @@
 @{
 }
 
-<div class="container text-center bg-secondary w-50">
+<div class="container text-center bg-secondary w-50 py-2">
     @if (Model.response.episodes.Count == 0)
     {
         <p class="text-light">No episodes found! Check if @Model.Anime has begun airing.</p>
@@ -14,19 +14,26 @@
 
     @foreach (episode episode in Model.response.episodes)
     {
-        <div class="card">
-            <div class="card-header">
-                <a class="card-title text-dark" href="#">@episode.title</a>
-            </div>
+        <div class="card mb-2">
+            <a class="card-title text-dark" onclick="window.open('@episode.forum_url');">
+                <div class="card-header">
+                    <h2>@episode.title</h2>
+                </div>
+            </a>
             <div class="card-body">
                 @if (episode.aired != null)
                 {
                     <p>Aired: @episode.aired</p>
                 }
-                @if (episode.filler != null)
+                @if (episode.filler == true)
                 {
-                    <p>Filler? @episode.filler</p>
+                    <p>Warning this episode is filler!</p>
                 }
+                @if (episode.recap == true)
+                {
+                    <p>This episode contains a recap.</p>
+                }
+                <button class="btn btn-primary" onclick="window.open('@episode.video_url');">Check out the episode here!</button>
             </div>
         </div>
     }

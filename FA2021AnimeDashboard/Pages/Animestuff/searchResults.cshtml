@@ -2,10 +2,10 @@
 @model FA2021AnimeDashboard.Pages.Animestuff.searchResultsModel
 @{
 }
-<div class="container bg-secondary">
+<div class="container bg-secondary py-2">
     @foreach (Anime anime in Model.response.results)
     {
-    <div class="card text-center">
+    <div class="card text-center mb-2">
         <div class="card-header">
             <p class="card-title">@anime.title</p>
         </div>

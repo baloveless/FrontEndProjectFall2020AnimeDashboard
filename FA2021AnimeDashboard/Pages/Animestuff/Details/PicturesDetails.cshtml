@@ -3,7 +3,7 @@
 @{
     var first = "active";
 }
-<div class="container text-center bg-secondary w-50">
+<div class="container text-center bg-secondary w-50 py-2">
     <a class="text-light" asp-page="/Animestuff/AnimeDetails" asp-route-Anime="@Model.Anime">Go back to details</a>
     @if (Model.response.pictures == null || Model.response.pictures.Count == 0)
     {

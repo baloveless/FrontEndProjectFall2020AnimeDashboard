@@ -1,0 +1,28 @@
+﻿@page "{Anime}"
+@model FA2021AnimeDashboard.Pages.Animestuff.searchResultsModel
+@{
+}
+<div class="container bg-secondary">
+    @foreach (Anime anime in Model.response.results)
+    {
+    <div class="card text-center">
+        <div class="card-header">
+            <p class="card-title">@anime.title</p>
+        </div>
+        <div class="card-img">
+            <img src="@anime.image_url" />
+        </div>
+        <div class="card-body">
+            @anime.synopsis
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-primary" onclick="goTo('@anime.title');">Details</button>
+        </div>
+    </div>
+    }
+</div>
+<script>
+    function goTo(anime) {
+        window.location.href = "/Animestuff/AnimeDetails/" + anime;
+    }
+</script>

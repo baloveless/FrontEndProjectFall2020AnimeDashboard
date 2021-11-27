@@ -7,11 +7,11 @@
 
    <!-- Search input and pick the information type they'd like to view, then pass that to the anime partial view --> 
    <input id="anime" type="text" />
-    <button class="btn btn-primary" type="submit" onclick="submitAnime();">Search</button>
+   <button class="btn btn-primary" type="submit" onclick="submitAnime();">Search</button>
 
 <script>
     function submitAnime() {
         var Anime = document.getElementById("anime").value;
-        window.location.href = "/Animestuff/AnimeDetails/" + Anime;
+        window.location.href = "/Animestuff/searchResults/" + Anime;
     }
 </script>

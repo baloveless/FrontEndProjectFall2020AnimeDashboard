@@ -34,11 +34,6 @@
 </div>
     @{
         await Html.RenderPartialAsync("~/Pages/Animestuff/partials/_character.cshtml");
-        if (HttpContext.Request.Method == "POST")
-        {
-            System.Diagnostics.Debug.WriteLine("\n" + HttpContext.Request.ToString() + "\n");
-            System.Diagnostics.Debug.WriteLine(Model);
-        }
     }
 
 

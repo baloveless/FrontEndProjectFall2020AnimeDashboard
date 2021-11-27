@@ -159,7 +159,7 @@ function newQuestion() {
 	document.getElementById("question");
 	// show see results button
 	document.getElementById("quiz").toggleAttribute('hidden')
-	document.getElementById("results").toggleAttribute('hidden'); 
+	document.getElementById("results").toggleAttribute('hidden');
 	resultsCharacter();
 }
 
@@ -204,13 +204,18 @@ let characterCard = document.getElementsByClassName('characterCard')[0];
 if (/[a-zA-z]/.test(characterCard.id)) {
 	characterCard.toggleAttribute('hidden');
 	setup.toggleAttribute('hidden');
-	let reset = document.createElement('button');
+	document.getElementById('results').toggleAttribute('hidden');
+	let reset = document.getElementById("submit"); // get submit button
 	reset.className = "btn btn-success btn-block btn-lg";
 	reset.innerHTML = "Reset Quiz";
-	reset.addEventListener('click', event => {
-		// reset cookies so quiz can be taken again
-	});
-	characterCard.append(reset);
+	document.getElementById("resultsHead").toggleAttribute('hidden'); 
+	// set up empty form to reset quiz
+	document.getElementById('mal_id').setAttribute('value', ' ');
+	document.getElementById('url').setAttribute('value', " ");
+	document.getElementById('image_url').setAttribute('value', " ");
+	document.getElementById('name').setAttribute('value', " ");
+	document.getElementById('role').setAttribute('value', " ");
+	// when submitted again, the character card will be empty
 }
 
 

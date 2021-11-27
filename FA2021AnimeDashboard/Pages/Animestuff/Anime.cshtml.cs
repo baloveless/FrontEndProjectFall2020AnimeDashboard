@@ -11,10 +11,8 @@ namespace FA2021AnimeDashboard.Pages.Animestuff
 {
     public class AnimeModel : PageModel
     {
-
-        public async Task OnGet()
+        public void OnGet()
         {
-
         }
 
     }

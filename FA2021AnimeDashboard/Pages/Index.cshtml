@@ -6,7 +6,6 @@
 @{
     var top = Model.response.top.ToArray();
     Random rnd = new Random();
-    int[] random = new int[5] { rnd.Next(1, 50), rnd.Next(1, 50), rnd.Next(1, 50), rnd.Next(1, 50), rnd.Next(1, 50) };
 }
 
 <div class="container text-center text-light bg-secondary">
@@ -17,10 +16,10 @@
                 <div class="container">
                     <div class="card border-0 bg-secondary">
                         <div class="card-img">
-                            <img src="@top[random[0]].image_url" width="300" height="500" class="d-block m-auto" alt="first slide">
+                            <img src="@top[0].image_url" width="300" height="500" class="d-block m-auto" alt="first slide">
                         </div>
                         <div class="card-body w-50 m-auto">
-                            <a class="page-link bg-dark text-light" href="@top[random[0]].url" alt="cover photo of @top[random[0]].title">@top[random[0]].title</a>
+                            <a class="page-link bg-dark text-light" asp-page="/AnimeStuff/AnimeDetails" asp-route-Anime="@top[0].title" alt="cover photo of @top[0].title">@top[0].title</a>
                         </div>
                     </div>
                 </div>
@@ -29,10 +28,10 @@
                 <div class="container">
                     <div class="card border-0 bg-secondary">
                         <div class="card-img">
-                            <img src="@top[random[1]].image_url" width="300" height="500" class="d-block m-auto" alt="second slide">
+                            <img src="@top[1].image_url" width="300" height="500" class="d-block m-auto" alt="second slide">
                         </div>
                         <div class="card-body w-50 m-auto">
-                            <a class="page-link bg-dark text-light" href="@top[random[1]].url" alt="cover photo of @top[random[1]].title">@top[random[1]].title</a>
+                            <a class="page-link bg-dark text-light" alt="cover photo of @top[1].title" asp-page="/AnimeStuff/AnimeDetails" asp-route-Anime="@top[1].title">@top[1].title </a>
                         </div>
                     </div>
                 </div>
@@ -41,10 +40,10 @@
                 <div class="container">
                     <div class="card border-0 bg-secondary">
                         <div class="card-img">
-                            <img src="@top[random[2]].image_url" width="300" height="500" class="d-block m-auto" alt="third slide">
+                            <img src="@top[2].image_url" width="300" height="500" class="d-block m-auto" alt="third slide">
                         </div>
                         <div class="card-body w-50 m-auto">
-                            <a class="page-link bg-dark text-light" href="@top[random[2]].url" alt="cover photo of @top[random[2]].title">@top[random[2]].title</a>
+                            <a class="page-link bg-dark text-light"asp-page="/AnimeStuff/AnimeDetails" asp-route-Anime="@top[2].title" alt="cover photo of @top[2].title">@top[2].title</a>
                         </div>
                     </div>
                 </div>
@@ -53,10 +52,10 @@
                 <div class="container">
                     <div class="card border-0 bg-secondary">
                         <div class="card-img">
-                            <img src="@top[random[3]].image_url" width="300" height="500" class="d-block m-auto" alt="fourth slide">
+                            <img src="@top[3].image_url" width="300" height="500" class="d-block m-auto" alt="fourth slide">
                         </div>
                         <div class="card-body w-50 m-auto">
-                            <a class="page-link bg-dark text-light" href="@top[random[3]].url" alt="cover photo of @top[random[3]].title">@top[random[3]].title</a>
+                            <a class="page-link bg-dark text-light" asp-page="/AnimeStuff/AnimeDetails" asp-route-Anime="@top[3].title" alt="cover photo of @top[3].title">@top[3].title</a>
                         </div>
                     </div>
                 </div>
@@ -65,10 +64,10 @@
                 <div class="container">
                     <div class="card border-0 bg-secondary">
                         <div class="card-img">
-                            <img src="@top[random[4]].image_url" width="300" height="500" class="d-block m-auto" alt="fifth slide">
+                            <img src="@top[4].image_url" width="300" height="500" class="d-block m-auto" alt="fifth slide">
                         </div>
                         <div class="card-body w-50 m-auto">
-                            <a class="page-link bg-dark text-light" href="@top[random[4]].url" alt="cover photo of @top[random[4]].title">@top[random[4]].title</a>
+                            <a class="page-link bg-dark text-light" asp-page="/AnimeStuff/AnimeDetails" asp-route-Anime="@top[4].title" alt="cover photo of @top[4].title">@top[4].title</a>
                         </div>
                     </div>
                 </div>

@@ -1,24 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Newtonsoft.Json;
 
-namespace FA2021AnimeDashboard.Pages.Animestuff.partials
+namespace FA2021AnimeDashboard.Pages.Animestuff.Details
 {
-    public class _animeModel : PageModel
+    public class CharactersDetailsModel : PageModel
     {
         public charactersResponse response { get; set; }
-
-        public async Task OnGet()
+        public string Anime { get; set; }
+        public async Task OnGetAsync(string Anime, int AnimeId)
         {
+            this.Anime = Anime;
             var client = new HttpClient();
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri("https://jikan1.p.rapidapi.com/anime/1735/characters_staff"),
+                RequestUri = new Uri("https://jikan1.p.rapidapi.com/anime/" + AnimeId + "/characters_staff"),
                 Headers =
     {
         { "x-rapidapi-host", "jikan1.p.rapidapi.com" },
@@ -34,6 +36,7 @@ namespace FA2021AnimeDashboard.Pages.Animestuff.partials
             }
         }
     }
+
     public class character
     {
         public int mal_id { get; set; }

@@ -1,11 +1,17 @@
-﻿@page
-@model FA2021AnimeDashboard.Pages.Animestuff.partials._animeModel
+﻿@page 
+@model FA2021AnimeDashboard.Pages.Animestuff.AnimeModel
 @{
     Layout = "~/Pages/Shared/_Layout.cshtml";
-    int id = 1735;
 }
     <link rel="stylesheet" href="~/css/Anime.css" defer />
 
    <!-- Search input and pick the information type they'd like to view, then pass that to the anime partial view --> 
-   @Html.Partial("~/Pages/Animestuff/partials/_anime.cshtml")
-    
+   <input id="anime" type="text" />
+   <button class="btn btn-primary" type="submit" onclick="submitAnime();">Search</button>
+
+<script>
+    function submitAnime() {
+        var Anime = document.getElementById("anime").value;
+        window.location.href = "/Animestuff/searchResults/" + Anime;
+    }
+</script>

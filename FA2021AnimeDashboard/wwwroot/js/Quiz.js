@@ -207,7 +207,7 @@ if (/[a-zA-z]/.test(characterCard.id)) {
 	document.getElementById('results').toggleAttribute('hidden');
 	let reset = document.getElementById("submit"); // get submit button
 	reset.className = "btn btn-success btn-block btn-lg";
-	reset.innerHTML = "Reset Quiz";
+	reset.innerHTML = "Take Another Quiz";
 	document.getElementById("resultsHead").toggleAttribute('hidden'); 
 	// set up empty form to reset quiz
 	document.getElementById('mal_id').setAttribute('value', ' ');

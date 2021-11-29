@@ -94,7 +94,3 @@ function createOptions() {
 
 createOptions()
 
-
-getShowsByGenre('46');
-
-

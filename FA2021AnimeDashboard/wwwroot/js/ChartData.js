@@ -62,20 +62,20 @@ let getShowDetails = async (id, category) => {
     }
 }
 
-getShowDetails('1735', 'stats');
-
-
 // genre is an id number as a string
 let getShowsByGenre = async (genre) => {
 	let Url = 'https://api.jikan.moe/v3/search/anime?q=&genre=' + genre + '&order_by=score&sort=desc';
 	try {
 		let response = await fetch(Url);
 		let data = await response.json();
+		console.log(data);
 		return data;
 	} catch (error) {
 		console.error(error);
     }
 }
+
+getShowsByGenre(30);
 
 function createOptions() {
 	let genreOptions = document.getElementById("showChoice");

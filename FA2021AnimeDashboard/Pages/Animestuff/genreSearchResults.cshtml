@@ -1,6 +1,52 @@
-﻿@page
+﻿@page "{Genre}"
 @model FA2021AnimeDashboard.Pages.Animestuff.genreSearchResultsModel
 @{
+    int i = 0;
+    string[] show = new string [4]{ "score", "score", "episodes", "start_date" };
 }
 
-<h1>@Model.response.mal_url</h1>
+<link rel="stylesheet" href="~/css/Quiz.css" />
+<h1>@Model.Genre</h1>
+<div class="container bg-secondary">
+    @foreach (Anime anime in Model.animes) {
+    <div class="card text-center">
+        <div class="card-header">
+            <p class="card-title">@Model.captions[i]</p>
+            <p class="card-title">@anime.title</p>
+        </div>
+        <div class="card-img">
+            <img src="@anime.image_url" />
+        </div>
+        <div class="card-body">
+           @if (show[i] == "score") { 
+               @anime.score;
+           }
+           @if (show[i] == "episodes") {
+               @anime.episodes;
+           }
+           @if (show[i] == "start_date") {
+               @anime.start_date;
+           }
+
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-primary" onclick="goTo('@anime.title');">Details</button>
+        </div>
+    </div>
+        @if (true)
+        {
+            i++;
+        }
+    }
+    <button id="search" type="submit" onclick="goBack()" class="btn btn-block btn-success">See another genre</button>
+</div>
+
+<script>
+    function goBack() {
+        var Genre = document.getElementById("search").value;
+        window.location.href = "/Animestuff/GenreInfo";
+    }
+    function goTo(anime) {
+        window.location.href = "/Animestuff/AnimeDetails/" + anime;
+    }
+</script>

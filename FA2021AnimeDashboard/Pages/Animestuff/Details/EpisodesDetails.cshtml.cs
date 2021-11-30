@@ -11,6 +11,9 @@ namespace FA2021AnimeDashboard.Pages.Animestuff.Details
 {
     public class EpisodesDetailsModel : PageModel
     {
+        public int fil = 0;
+        public int rec = 0;
+        public int epi = 0;
         public string Anime { get; set; }
         public episodesResponse response { get; set; }
         public async Task OnGetAsync(string Anime, int AnimeId)
@@ -33,6 +36,20 @@ namespace FA2021AnimeDashboard.Pages.Animestuff.Details
                 var body = await response.Content.ReadAsStringAsync();
                 var myJObject = JsonConvert.DeserializeObject<episodesResponse>(body);
                 this.response = (myJObject);
+                foreach(episode ep in myJObject.episodes)
+                {
+                    if (ep.filler == true) {
+                        fil++;
+                    }
+                    else if (ep.recap == true)
+                    {
+                        rec++;
+                    }
+                    else
+                    {
+                        epi++;
+                    }
+                }
             }
         }
     }

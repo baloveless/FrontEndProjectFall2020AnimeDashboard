@@ -2,16 +2,27 @@
 @model FA2021AnimeDashboard.Pages.Animestuff.Details.EpisodesDetailsModel
 @{
 }
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <div class="container text-center bg-secondary w-50 py-2">
     @if (Model.response.episodes.Count == 0)
     {
         <p class="text-light">No episodes found! Check if @Model.Anime has begun airing.</p>
     }
     <a class="text-light" asp-page="/Animestuff/AnimeDetails" asp-route-Anime="@Model.Anime">Go back to details</a>
-
-
-
+    <div>
+        <button class="btn btn-primary" onclick="toggleBar();">Bar Chart</button>
+        <button class="btn btn-dark" onclick="togglePie();">Pie Chart</button>
+    </div>
+    <div class="container" id="barDiv">
+        <div class="bg-light">
+            <canvas id="barChart" class="w-100 h-100"></canvas>
+        </div>
+    </div>
+    <div class="container" id="pieDiv" hidden="hidden">
+        <div class="bg-light">
+            <canvas id="pieChart" class="w-100 h-50"></canvas>
+        </div>
+    </div>
     @foreach (episode episode in Model.response.episodes)
     {
         <div class="card mb-2">
@@ -38,3 +49,72 @@
         </div>
     }
 </div>
+<script>
+    window.addEventListener("DOMContentLoaded", function () {
+    const ctx = document.getElementById('barChart');
+    const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Main', 'Filler','Recap'],
+            datasets: [{
+                label: 'Episode Breakdown',
+                data: [@Model.epi, @Model.fil, @Model.rec],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        new Chart(document.getElementById("pieChart"), {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'Main',
+                    'Filler',
+                    'Recap'
+                ],
+                datasets: [{
+                    label: 'Episode Breakdown',
+                    data: [@Model.epi, @Model.fil, @Model.rec],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Episode Breakdown'
+                    }
+                }
+            }
+        })
+    });
+    function toggleBar() {
+        document.getElementById("barDiv").hidden = false;
+        document.getElementById("pieDiv").hidden = true;
+    }
+    function togglePie() {
+        document.getElementById("pieDiv").hidden = false;
+        document.getElementById("barDiv").hidden = true;
+    }
+</script>

@@ -15,7 +15,6 @@
         <button class="btn btn-primary" onclick="toggleBar();">Bar Chart</button>
         <button class="btn btn-dark" onclick="togglePie();">Pie Chart</button>
     </div>
-
     <div id="1">
         <p hidden="hidden">@Model.response.scores.one.votes</p>
         <p hidden="hidden">@Model.response.scores.one.percentage</p>
@@ -58,11 +57,13 @@
     </div>
 </div>
 <div class="container" id="barDiv">
+    <p class="text-light">User Rating: @Model.Score/10</p>
     <div class="bg-light">
         <canvas id="barChart" class="w-100 h-100"></canvas>
     </div>
 </div>
 <div class="container" id="pieDiv" hidden="hidden">
+    <p class="text-light">User Rating: @Model.Score/10</p>
     <div class="bg-light">
         <canvas id="pieChart" class="w-100 h-50"></canvas>
     </div>

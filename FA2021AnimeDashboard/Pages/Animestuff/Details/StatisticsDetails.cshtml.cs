@@ -11,11 +11,13 @@ namespace FA2021AnimeDashboard.Pages.Animestuff.Details
 {
     public class StatisticsDetailsModel : PageModel
     {
+        public float Score { get; set; }
         public statsResponse response { get; set; }
         public string Anime { get; set; }
-        public async Task OnGetAsync(string Anime, int AnimeId)
+        public async Task OnGetAsync(string Anime, int AnimeId, float Score)
         {
             this.Anime = Anime;
+            this.Score = Score;
             var client = new HttpClient();
             var request = new HttpRequestMessage
             {

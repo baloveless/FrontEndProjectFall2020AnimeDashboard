@@ -13,7 +13,8 @@
             <img src="@anime.image_url" />
         </div>
         <div class="card-body">
-            @anime.synopsis
+            <p>User Rating: @anime.score/10</p>
+            <p>@anime.synopsis</p>
         </div>
         <div class="card-footer">
             <button class="btn btn-primary" onclick="goTo('@anime.title');">Details</button>

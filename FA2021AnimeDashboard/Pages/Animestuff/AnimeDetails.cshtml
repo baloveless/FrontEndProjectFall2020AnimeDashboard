@@ -5,32 +5,33 @@
 <div class="container text-center bg-secondary w-50">
     @if (Model.anime == Model.response.title)
     {
-        <div class="card">
-            <img class="card-img" src="@Model.response.image_url" />
-            <p class="card-title text-dark">@Model.response.title</p>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-6">
-                        <a asp-page="/AnimeStuff/Details/CharactersDetails" asp-route-Anime="@Model.response.title" asp-route-AnimeId="@Model.response.mal_id">Characters and Staff</a>
-                    </div>
-                    <div class="col-6">
-                        <a asp-page="/AnimeStuff/Details/EpisodesDetails" asp-route-Anime="@Model.response.title" asp-route-AnimeId="@Model.response.mal_id">Episodes</a>
-                    </div>
-                    <div class="col-6">
-                        <a asp-page="/AnimeStuff/Details/NewsDetails" asp-route-Anime="@Model.response.title" asp-route-AnimeId="@Model.response.mal_id">News</a>
-                    </div>
-                    <div class="col-6">
-                        <a asp-page="/AnimeStuff/Details/PicturesDetails" asp-route-Anime="@Model.response.title" asp-route-AnimeId="@Model.response.mal_id">Pictures</a>
-                    </div>
-                    <div class="col-6">
-                        <a asp-page="/AnimeStuff/Details/VideosDetails" asp-route-Anime="@Model.response.title" asp-route-AnimeId="@Model.response.mal_id">Videos</a>
-                    </div>
-                    <div class="col-6">
-                        <a asp-page="/AnimeStuff/Details/StatisticsDetails" asp-route-Anime="@Model.response.title" asp-route-AnimeId="@Model.response.mal_id">Statistics</a>
-                    </div>
+    <div class="card">
+        <img class="card-img" src="@Model.response.image_url" />
+        <p class="card-title text-dark">@Model.response.title</p>
+        <p>User Rating: @Model.response.score/10</p>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6">
+                    <a asp-page="/AnimeStuff/Details/CharactersDetails" asp-route-Anime="@Model.response.title" asp-route-AnimeId="@Model.response.mal_id">Characters and Staff</a>
+                </div>
+                <div class="col-6">
+                    <a asp-page="/AnimeStuff/Details/EpisodesDetails" asp-route-Anime="@Model.response.title" asp-route-AnimeId="@Model.response.mal_id">Episodes</a>
+                </div>
+                <div class="col-6">
+                    <a asp-page="/AnimeStuff/Details/NewsDetails" asp-route-Anime="@Model.response.title" asp-route-AnimeId="@Model.response.mal_id">News</a>
+                </div>
+                <div class="col-6">
+                    <a asp-page="/AnimeStuff/Details/PicturesDetails" asp-route-Anime="@Model.response.title" asp-route-AnimeId="@Model.response.mal_id">Pictures</a>
+                </div>
+                <div class="col-6">
+                    <a asp-page="/AnimeStuff/Details/VideosDetails" asp-route-Anime="@Model.response.title" asp-route-AnimeId="@Model.response.mal_id">Videos</a>
+                </div>
+                <div class="col-6">
+                    <a asp-page="/AnimeStuff/Details/StatisticsDetails" asp-route-Anime="@Model.response.title" asp-route-AnimeId="@Model.response.mal_id" asp-route-Score="@Model.response.score">Statistics</a>
                 </div>
             </div>
         </div>
+    </div>
     }
     else
     {

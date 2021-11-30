@@ -11,6 +11,8 @@ namespace FA2021AnimeDashboard.Pages.Animestuff.Details
 {
     public class CharactersDetailsModel : PageModel
     {
+        public int mainChar = 0;
+        public int supChar = 0;
         public charactersResponse response { get; set; }
         public string Anime { get; set; }
         public async Task OnGetAsync(string Anime, int AnimeId)
@@ -33,6 +35,17 @@ namespace FA2021AnimeDashboard.Pages.Animestuff.Details
                 var body = await response.Content.ReadAsStringAsync();
                 var myJObject = JsonConvert.DeserializeObject<charactersResponse>(body);
                 this.response = (myJObject);
+                foreach(character aChar in myJObject.characters)
+                {
+                    if(aChar.role == "Main")
+                    {
+                        mainChar++;
+                    }
+                    else if(aChar.role == "Supporting")
+                    {
+                        supChar++;
+                    }
+                }
             }
         }
     }

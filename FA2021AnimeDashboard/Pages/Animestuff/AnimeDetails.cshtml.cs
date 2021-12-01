@@ -12,6 +12,7 @@ namespace FA2021AnimeDashboard.Pages.Animestuff
     {
         public Anime response { get; set; }
         public string anime { get; set; }
+        public string genres;
         public async Task OnGet(string Anime)
         {
             anime = Anime;
@@ -32,6 +33,8 @@ namespace FA2021AnimeDashboard.Pages.Animestuff
                 var body = await response.Content.ReadAsStringAsync();
                 var myJObject = JsonConvert.DeserializeObject<AnimeResponse>(body);
                 this.response = (myJObject.results.FirstOrDefault());
+                System.Diagnostics.Debug.WriteLine(this.response);
+                System.Diagnostics.Debug.WriteLine(myJObject);
             }
         }
     }
@@ -50,7 +53,8 @@ namespace FA2021AnimeDashboard.Pages.Animestuff
         public DateTime? end_date { get; set; }
         public int? members { get; set; }
         public string? rated { get; set; }
-
+        //public int? ranking { get; set; }
+        //public int? popularity { get; set; }
     }
 
     public class AnimeResponse

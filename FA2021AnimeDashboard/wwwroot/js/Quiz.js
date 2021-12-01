@@ -44,11 +44,13 @@ function showOptions(res) {
 	}
 	quizOptions.toggleAttribute("disabled");
 	if (document.getElementById('startQuiz') === null) {
+		let br = document.createElement("br")
 		let btn = document.createElement("button");
 		btn.className = "btn btn-block btn-success";
 		btn.id = "startQuiz";
 		btn.value = "submit"
 		btn.innerText = "Start Quiz"
+		form.appendChild(br);
 		form.appendChild(btn);
 	}
 }

@@ -12,26 +12,26 @@ p {
     font-size: 12pt;
 }
 
-img{
+img {
     height: 400px;
     width: fit-content;
     margin: auto;
 }
 
-.btn-primary{
+.btn-primary {
     background-color: darkblue;
 }
 
-.btn-info{
+.btn-info {
     background-color: #343a40;
     color: white;
     border: none;
 }
 
-.btn-info:hover{
-    background-color: white;
-    color: black;
-}
+    .btn-info:hover {
+        background-color: white;
+        color: black;
+    }
 
 .flex-container {
     display: flex;
@@ -96,20 +96,17 @@ label {
     color: #0173a0;
 }
 
-.characterCard{
+.characterCard {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
     max-height: 80vh;
     margin: auto;
-    max-width: 400px;
+    max-width: 700px
 }
 
-h1{
+h1 {
     text-align: center;
     color: white;
 }
-
-
-

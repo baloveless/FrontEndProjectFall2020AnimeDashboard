@@ -5,12 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Pages\Animestuff\Index1.cshtml.cs" />
     <Compile Remove="Pages\Animestuff\Index2.cshtml.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="Pages\Animestuff\Index1.cshtml" />
     <Content Remove="Pages\Animestuff\Index2.cshtml" />
   </ItemGroup>
 

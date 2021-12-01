@@ -2,7 +2,56 @@
 
 <div hidden class="characterCard" id='@Model.toShow.name' >
    <h1>@Model.toShow.name</h1> 
-   <img src =@Model.toShow.image_url/>
+   <div class="container text-center text-light bg-secondary">
+       <div id="carousel" class="carousel slide" data-ride="carousel">
+           <div class="carousel-inner">
+               <div class="carousel-item active">
+                   <div class="container">
+                       <div class="card border-0 bg-secondary">
+                           <div class="card-img">
+                               <img src="@Model.toShow.image_url" width="300" height="500" class="d-block m-auto" alt="base slide">
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           <div class="carousel-item">
+               <div class="container">
+                  <div class="card border-0 bg-secondary">
+                     <div class="card-img">
+                        <img src="@Model.singleResponse.pictures[1].image_url" width="300" height="500" class="d-block m-auto" alt="first slide">
+                     </div>
+                  </div>
+               </div>
+           </div>
+           <div class="carousel-item">
+               <div class="container">
+                  <div class="card border-0 bg-secondary">
+                     <div class="card-img">
+                        <img src="@Model.singleResponse.pictures[2].image_url" width="300" height="500" class="d-block m-auto" alt="second slide">
+                     </div>
+                  </div>
+               </div>
+           </div>
+           <div class="carousel-item">
+               <div class="container">
+                  <div class="card border-0 bg-secondary">
+                     <div class="card-img">
+                        <img src="@Model.singleResponse.pictures[3].image_url" width="300" height="500" class="d-block m-auto" alt="third slide">
+                     </div>
+                  </div>
+               </div>
+           </div>
+       </div>
+        <button class="carousel-control-prev bg-dark h-25 w-auto" type="button" data-target="#carousel" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next bg-dark h-25 w-auto" type="button" data-target="#carousel" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+       </div>
+   </div>
 </div>
 
 

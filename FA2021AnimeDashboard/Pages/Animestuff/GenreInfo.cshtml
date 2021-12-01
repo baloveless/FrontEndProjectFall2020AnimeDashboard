@@ -5,12 +5,19 @@
 
 
 <script defer src="~/js/ChartData.js"></script>
+<link rel="stylesheet" href="~/css/Quiz.css" />
 <div>
-    <h1 id="genre"></h1>
-    <form class="setup" id="setup">
+    <h1 id="genre">Search Genre</h1>
         <select class="form-control" id="showChoice" disabled>
             <option class="quizOpt">Genre</option>
         </select>
-        <button id="search" value="submit" class="btn btn-block btn-primary" disabled>Search</button>
-    </form>
+        <button id="search" type="submit" onclick="submitGenre()" class="btn btn-block btn-primary" disabled>Search</button>
 </div>
+
+<script>
+    function submitGenre() {
+        var Genre = document.getElementById("showChoice").value;
+        window.location.href = "/Animestuff/genreSearchResults/" + Genre;
+    }
+</script>
+

@@ -8,11 +8,16 @@
 <!-- Search input and pick the information type they'd like to view, then pass that to the anime partial view -->
 <div class="container text-center bg-secondary w-50 pb-2" id="search">
     <h2 class="text-light">Search for your favorite anime!</h2>
-    <input id="anime" type="text" />
-    <button class="btn btn-primary" type="submit" onclick="submitAnime();">Search</button>
+    <form onsubmit="submitAnime()">
+        <input id="anime" type="text" />
+        <button class="btn btn-primary" type="submit" value="Submit"  onclick="submitAnime();">Search</button>
+    </form>
 </div>
 
 <script>
+    document.addEventListener("submit", event => {
+        event.preventDefault();
+    });
     function submitAnime() {
         var Anime = document.getElementById("anime").value;
         if (Anime.length >= 3) {

@@ -9,7 +9,7 @@
         <img class="card-img" src="@Model.response.image_url" />
         <h4 class="card-title text-dark">@Model.response.title</h4>
         <div class="bg-light">
-            <div class="col">Rating: @Model.response.rated</div> <div class="col">Site Ranking: </div> <div class="col">Score: @Model.response.score/10</div>
+            <div class="col">Rating: @Model.response.rated</div> <div class="col">Score: @Model.response.score/10</div>
         </div>
             <div class="card-body">
                 <div class="row">
@@ -37,8 +37,9 @@
         }
         else
         {
-        @Model.anime @Model.response.title
-        <p>Due to limitations for the API this anime could not be directly queried</p>
+        
+        <h4 class="text-light">@Model.response.title</h4>
+        <p class="text-light">Due to limitations for the API this anime could not be directly queried</p>
         <a class="text-light" asp-page="/AnimeStuff/Anime">Back to search</a>
         }
     </div>

@@ -13,12 +13,14 @@ namespace FA2021AnimeDashboard.Pages.Animestuff.partials
     public class _characterModel : PageModel
     {
         public character toShow;
-        public characterResponse singleResponse;
+        public characterResponse singleResponse { get; set; }
         public charactersResponse multiResponse;
-    
+
         // creates an empty object to avoid null reference errors
-        public async Task OnGet() {
-            if (toShow == null || toShow.url == "") {
+        public async Task OnGet()
+        {
+            if (toShow == null || toShow.url == "")
+            {
                 var myJObject = JsonConvert.DeserializeObject<character>("" +
                     "{'mal_id': 0," +
                     "'url': ''," +
@@ -29,16 +31,35 @@ namespace FA2021AnimeDashboard.Pages.Animestuff.partials
                     "}");
                 toShow = (myJObject);
             }
+            singleResponse = new characterResponse();
+            singleResponse.pictures = new List<picture>();
+            picture hold = new picture();
+            hold.image_url = toShow.image_url;
+            for (int i = 0; i < 4; i++)
+                singleResponse.pictures.Add(hold);
         }
 
         public async Task OnPostAsync()
         {
             toShow = new character();
-            // need to write function to change string to int for mal_id
+            int temp = 0;
+            int.TryParse(Request.Form["mal_id"].ToString(), out temp);
+            toShow.mal_id = temp;
             toShow.url = Request.Form["url"];
             toShow.image_url = Request.Form["image_url"];
             toShow.name = Request.Form["name"];
             toShow.role = Request.Form["role"];
+            if (toShow.mal_id > 0)
+                await CreatePage();
+            else
+            {
+                singleResponse = new characterResponse();
+                singleResponse.pictures = new List<picture>();
+                picture hold = new picture();
+                hold.image_url = toShow.image_url;
+                for (int i = 0; i < 4; i++)
+                    singleResponse.pictures.Add(hold);
+            }
         }
 
         // get list of characters pictures, (incomplete)
@@ -48,7 +69,7 @@ namespace FA2021AnimeDashboard.Pages.Animestuff.partials
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri("https://jikan1.p.rapidapi.com/character/" + 1 + "/request?=pictures"),
+                RequestUri = new Uri("https://api.jikan.moe/v3/character/" + toShow.mal_id + "/pictures"),
                 Headers =
                 {
                     { "x-rapidapi-host", "jikan1.p.rapidapi.com" },
@@ -65,12 +86,18 @@ namespace FA2021AnimeDashboard.Pages.Animestuff.partials
         }
     }
 
+    public class picture
+    {
+        public string image_url { get; set; }
+    }
+
+
     public class characterResponse
     {
         public string request_hash { get; set; }
         public string request_cached { get; set; }
         public int cache_expiry { get; set; }
 
-        public List<String> pictures { get; set; }
+        public List<picture> pictures { get; set; }
     }
 }

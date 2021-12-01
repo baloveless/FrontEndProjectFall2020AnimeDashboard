@@ -44,11 +44,13 @@ function showOptions(res) {
 	}
 	quizOptions.toggleAttribute("disabled");
 	if (document.getElementById('startQuiz') === null) {
+		let br = document.createElement("br")
 		let btn = document.createElement("button");
 		btn.className = "btn btn-block btn-success";
 		btn.id = "startQuiz";
 		btn.value = "submit"
 		btn.innerText = "Start Quiz"
+		form.appendChild(br);
 		form.appendChild(btn);
 	}
 }
@@ -69,7 +71,7 @@ form.addEventListener("submit", event => {
 console.log(document.URL.replace("Animestuff/Quiz", ''));
 
 // Populates a questions photo options
-let getPhotos = async (i) => { 
+let getPhotos = async (i) => {
 	try {
 		for (x = 0; x < 4; x++) {
 			let picsUrl = 'https://imsea.herokuapp.com/api/1?q=peach';
@@ -78,7 +80,7 @@ let getPhotos = async (i) => {
 		}
 	} catch (error) {
 		console.error(error);
-    }
+	}
 }
 
 /* Quiz questions */
@@ -94,13 +96,13 @@ let questions = ["What is your favorite fruit?",
 	"When one of my friends suggests an idea I ..."];
 
 let answers = [["apple", "pear", "orange", "peach"],
-	["Reading a book", "Going out to a Club", "Watching Netflix", "Seeing Grandma"],
-	["Blue", "Red", "Green", "Yellow"],
-	["a Goofball", "Kind", "Honest", "Trustworthy"],
-	["tear it down", "talk it out", "get a friends help", "call mom"],
-	["pocket knife", "snack", "map", "friend"],
-	["join in", "call the cops", "start my own party", "sulk"],
-	["listen carefully", "ignore them", "pretend it was mine", "use it everytime"]
+["Reading a book", "Going out to a Club", "Watching Netflix", "Seeing Grandma"],
+["Blue", "Red", "Green", "Yellow"],
+["a Goofball", "Kind", "Honest", "Trustworthy"],
+["tear it down", "talk it out", "get a friends help", "call mom"],
+["pocket knife", "snack", "map", "friend"],
+["join in", "call the cops", "start my own party", "sulk"],
+["listen carefully", "ignore them", "pretend it was mine", "use it everytime"]
 ];
 
 let pictures = [
@@ -190,7 +192,7 @@ let resultsCharacter = async () => {
 		document.getElementById('role').setAttribute('value', character.role);
 	} catch (error) {
 		console.error(error);
-    }
+	}
 }
 
 function getUrl() {
@@ -207,8 +209,8 @@ if (/[a-zA-z]/.test(characterCard.id)) {
 	document.getElementById('results').toggleAttribute('hidden');
 	let reset = document.getElementById("submit"); // get submit button
 	reset.className = "btn btn-success btn-block btn-lg";
-	reset.innerHTML = "Reset Quiz";
-	document.getElementById("resultsHead").toggleAttribute('hidden'); 
+	reset.innerHTML = "Take Another Quiz";
+	document.getElementById("resultsHead").toggleAttribute('hidden');
 	// set up empty form to reset quiz
 	document.getElementById('mal_id').setAttribute('value', ' ');
 	document.getElementById('url').setAttribute('value', " ");
